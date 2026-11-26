@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5ef">
+  <meta name="description" content="Practical guides to heat pumps, HVAC systems, insulation and home energy upgrades for homeowners in the US, Canada, UK and Australia. Compare options, understand costs and plan improvements with useful calculators.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <title>Home Energy Upgrade — Make your next home upgrade a smarter one</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --page: #f5f5ef;
+      --surface: #ffffff;
+      --surface-soft: #eeefe7;
+      --ink: #172a25;
+      --muted: #687771;
+      --line: #dfe4dc;
+      --green: #174b3e;
+      --green-deep: #10392f;
+      --green-bright: #b7e38a;
+      --green-pale: #e7f0e3;
+      --orange: #e7a76d;
+      --orange-pale: #fbefe3;
+      --shadow: 0 20px 60px rgba(24, 49, 40, .09);
+      --shadow-small: 0 9px 28px rgba(24, 49, 40, .07);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --radius-sm: 13px;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    body.menu-open { overflow: hidden; }
+    button, input, select { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; text-decoration: none; }
+    button { color: inherit; }
+    img, svg { max-width: 100%; }
+    :focus-visible { outline: 3px solid #d38b50; outline-offset: 3px; }
+    ::selection { background: #cce8b7; color: var(--green-deep); }
+
+    .skip-link {
+      position: fixed; top: 10px; left: 10px; z-index: 1000;
+      padding: 10px 15px; border-radius: 9px; background: var(--green-deep); color: #fff;
+      transform: translateY(-150%); transition: transform .2s ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .container { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      color: var(--green); font-size: .76rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--orange); border-radius: 2px; }
+    .section { padding: 92px 0; }
+    .section-heading { max-width: 660px; margin-bottom: 34px; }
+    .section-heading h2 {
+      margin: 12px 0 12px; font-size: clamp(2rem, 4vw, 3.15rem); line-height: 1.08;
+      letter-spacing: -.055em; font-weight: 760;
+    }
+    .section-heading p { max-width: 590px; margin: 0; color: var(--muted); font-size: 1.03rem; }
+    .text-link { display: inline-flex; align-items: center; gap: 9px; color: var(--green); font-weight: 750; font-size: .92rem; }
+    .text-link svg { transition: transform .2s ease; }
+    .text-link:hover svg { transform: translateX(4px); }
+
+    /* Header */
+    .site-header {
+      position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(216, 224, 215, .8);
+      background: rgba(245, 245, 239, .91); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    }
+    .header-inner { min-height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; flex: 0 0 auto; }
+    .brand-mark {
+      display: grid; width: 42px; height: 42px; place-items: center; border-radius: 14px;
+      color: #d9f0c2; background: var(--green); box-shadow: 0 7px 16px rgba(23, 75, 62, .18);
+    }
+    .brand-name { display: flex; flex-direction: column; line-height: 1.05; }
+    .brand-name strong { font-size: 1rem; letter-spacing: -.035em; font-weight: 830; }
+    .brand-name span { margin-top: 5px; color: var(--muted); font-size: .64rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .desktop-nav { display: flex; align-items: center; gap: clamp(18px, 2.5vw, 34px); margin-left: auto; }
+    .desktop-nav a { color: #4f625a; font-size: .87rem; font-weight: 680; transition: color .18s ease; }
+    .desktop-nav a:hover, .desktop-nav a[aria-current="page"] { color: var(--green); }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .icon-button {
+      display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid var(--line);
+      border-radius: 13px; background: rgba(255,255,255,.65); cursor: pointer; transition: .2s ease;
+    }
+    .icon-button:hover { border-color: #b7c8b9; background: #fff; transform: translateY(-1px); }
+    .header-cta, .button-primary, .button-secondary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 0;
+      border-radius: 999px; padding: 12px 19px; font-size: .88rem; font-weight: 760; cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .header-cta, .button-primary { background: var(--green); color: #fff; box-shadow: 0 8px 18px rgba(23,75,62,.14); }
+    .header-cta:hover, .button-primary:hover { background: var(--green-deep); transform: translateY(-2px); box-shadow: 0 12px 24px rgba(23,75,62,.2); }
+    .button-secondary { background: #fff; color: var(--green); border: 1px solid var(--line); }
+    .button-secondary:hover { border-color: #a9c0ad; transform: translateY(-2px); }
+    .menu-toggle { display: none; }
+
+    /* Hero */
+    .hero { position: relative; overflow: hidden; padding: 72px 0 64px; }
+    .hero::before {
+      content: ""; position: absolute; width: 470px; height: 470px; right: -220px; top: -230px;
+      border: 1px solid rgba(95, 132, 103, .13); border-radius: 50%;
+      box-shadow: 0 0 0 38px rgba(95,132,103,.025), 0 0 0 78px rgba(95,132,103,.02);
+      pointer-events: none;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.03fr .97fr; align-items: center; gap: 58px; }
+    .hero-copy { position: relative; z-index: 1; padding: 18px 0 24px; }
+    .hero-kicker {
+      display: inline-flex; align-items: center; gap: 9px; padding: 7px 12px; border: 1px solid #dce7d8;
+      border-radius: 999px; background: rgba(255,255,255,.68); color: var(--green); font-size: .75rem; font-weight: 760;
+    }
+    .kicker-dot { width: 7px; height: 7px; border-radius: 50%; background: #7cae64; box-shadow: 0 0 0 4px #e4efde; }
+    .hero h1 { max-width: 660px; margin: 23px 0 20px; font-size: clamp(3.05rem, 6.1vw, 5.35rem); line-height: .99; letter-spacing: -.075em; font-weight: 790; }
+    .hero h1 em { color: var(--green); font-style: normal; }
+    .hero-lede { max-width: 555px; margin: 0; color: #61716a; font-size: clamp(1.02rem, 1.6vw, 1.16rem); line-height: 1.75; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .hero-notes { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 31px; color: #687771; font-size: .78rem; font-weight: 650; }
+    .hero-notes span { display: inline-flex; align-items: center; gap: 7px; }
+    .hero-notes svg { color: #6d9960; }
+    .hero-art { position: relative; min-height: 480px; display: grid; place-items: center; }
+    .art-orbit { position: absolute; width: 430px; height: 430px; border: 1px solid #dce4d9; border-radius: 50%; }
+    .art-orbit::before, .art-orbit::after { content: ""; position: absolute; border: 1px solid #e3e8df; border-radius: 50%; inset: 34px; }
+    .art-orbit::after { inset: 74px; }
+    .house-scene {
+      position: relative; z-index: 1; width: min(100%, 475px); min-height: 390px; overflow: hidden;
+      border-radius: 34px; background: linear-gradient(145deg, #1d5a49 0%, #164638 58%, #10372e 100%);
+      box-shadow: 0 28px 70px rgba(18, 65, 51, .22);
+    }
+    .house-scene::before { content: ""; position: absolute; width: 260px; height: 260px; border-radius: 50%; right: -74px; top: -85px; background: rgba(188,226,151,.12); }
+    .scene-label { position: absolute; top: 25px; left: 28px; color: #c9e4bc; font-size: .68rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .scene-sun { position: absolute; top: 76px; right: 78px; width: 48px; height: 48px; border-radius: 50%; background: #e8b17a; box-shadow: 0 0 0 13px rgba(232,177,122,.1), 0 0 0 28px rgba(232,177,122,.06); }
+    .house-drawing { position: absolute; left: 50%; top: 90px; width: 335px; height: 265px; transform: translateX(-50%); }
+    .scene-ground { position: absolute; left: -8%; right: -8%; bottom: -48px; height: 135px; border-radius: 50% 50% 0 0; background: #244f3e; }
+    .scene-wave { position: absolute; bottom: 0; left: 0; width: 100%; height: 70px; opacity: .55; }
+    .scene-chip {
+      position: absolute; z-index: 3; display: flex; align-items: center; gap: 10px; padding: 12px 15px;
+      border: 1px solid rgba(255,255,255,.65); border-radius: 16px; background: rgba(255,255,255,.94);
+      box-shadow: 0 12px 30px rgba(11,39,31,.2); color: var(--ink);
+    }
+    .scene-chip.one { left: -20px; bottom: 76px; }
+    .scene-chip.two { right: -18px; top: 118px; }
+    .chip-icon { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 11px; color: var(--green); background: var(--green-pale); }
+    .scene-chip strong { display: block; font-size: .8rem; line-height: 1.2; }
+    .scene-chip small { display: block; margin-top: 3px; color: var(--muted); font-size: .66rem; }
+    .hero-scroll { position: absolute; right: 0; bottom: 21px; display: flex; align-items: center; gap: 9px; color: #8a9790; font-size: .68rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+
+    /* Trust strip */
+    .trust-strip { border-block: 1px solid var(--line); background: rgba(255,255,255,.47); }
+    .trust-inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 22px 0; }
+    .trust-item { display: flex; align-items: center; justify-content: center; gap: 12px; color: #51645b; font-size: .82rem; font-weight: 720; }
+    .trust-item svg { color: #6f9365; flex: 0 0 auto; }
+
+    /* Category cards */
+    .categories-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .category-card {
+      position: relative; min-height: 225px; display: flex; flex-direction: column; align-items: flex-start;
+      padding: 25px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface);
+      box-shadow: 0 5px 18px rgba(24,49,40,.025); transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+    .category-card:hover { transform: translateY(-6px); border-color: #b9cdbb; box-shadow: var(--shadow-small); }
+    .category-icon { display: grid; width: 49px; height: 49px; place-items: center; border-radius: 15px; background: var(--green-pale); color: var(--green); }
+    .category-card:nth-child(2) .category-icon { background: var(--orange-pale); color: #a66a35; }
+    .category-card:nth-child(3) .category-icon { background: #edf0df; color: #72834a; }
+    .category-card:nth-child(4) .category-icon { background: #e8edf1; color: #59778a; }
+    .category-card h3 { margin: 20px 0 6px; font-size: 1.08rem; letter-spacing: -.025em; }
+    .category-card p { margin: 0 0 20px; color: var(--muted); font-size: .83rem; line-height: 1.55; }
+    .category-card .card-arrow { position: absolute; right: 23px; bottom: 23px; color: var(--green); }
+
+    /* Guide finder */
+    .guides-section { background: #eeefe8; }
+    .guides-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 26px; margin-bottom: 28px; }
+    .guides-top .section-heading { margin-bottom: 0; }
+    .search-wrap { position: relative; width: min(100%, 340px); flex: 0 0 340px; }
+    .search-wrap > svg { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #819087; pointer-events: none; }
+    .search-input { width: 100%; height: 52px; padding: 0 48px 0 45px; border: 1px solid #d8e0d6; border-radius: 15px; background: #fff; color: var(--ink); outline: none; box-shadow: 0 5px 15px rgba(24,49,40,.025); }
+    .search-input:focus { border-color: #8eae91; box-shadow: 0 0 0 4px rgba(103,145,99,.12); }
+    .search-shortcut { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); padding: 3px 7px; border: 1px solid #e2e7e0; border-radius: 6px; background: #f7f8f5; color: #829087; font-size: .67rem; }
+    .guide-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .guide-card { overflow: hidden; border: 1px solid #dfe4dc; border-radius: var(--radius-md); background: #fff; transition: transform .2s ease, box-shadow .2s ease; }
+    .guide-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-small); }
+    .guide-visual { position: relative; height: 178px; overflow: hidden; display: grid; place-items: center; }
+    .guide-visual.green { background: #dfead9; }
+    .guide-visual.peach { background: #f4e4d4; }
+    .guide-visual.blue { background: #dfe9e9; }
+    .guide-visual.olive { background: #e9ead8; }
+    .guide-visual.lilac { background: #e8e5ed; }
+    .guide-visual.sand { background: #eee5d6; }
+    .guide-visual::before { content: ""; position: absolute; width: 210px; height: 210px; border: 1px solid rgba(36,76,57,.13); border-radius: 50%; }
+    .guide-visual::after { content: ""; position: absolute; width: 155px; height: 155px; border: 1px solid rgba(36,76,57,.12); border-radius: 50%; }
+    .guide-illustration { position: relative; z-index: 1; width: 118px; height: 118px; color: #285a48; }
+    .guide-visual.peach .guide-illustration { color: #a66a35; }
+    .guide-visual.blue .guide-illustration { color: #52798b; }
+    .guide-visual.olive .guide-illustration { color: #77844a; }
+    .guide-visual.lilac .guide-illustration { color: #756a91; }
+    .guide-visual.sand .guide-illustration { color: #9c7445; }
+    .guide-tag { position: absolute; top: 15px; left: 16px; z-index: 2; padding: 5px 9px; border: 1px solid rgba(255,255,255,.7); border-radius: 999px; background: rgba(255,255,255,.72); color: #496257; font-size: .65rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .guide-content { padding: 21px 22px 22px; }
+    .guide-meta { display: flex; align-items: center; gap: 9px; margin-bottom: 10px; color: #829087; font-size: .7rem; font-weight: 720; }
+    .guide-meta span + span::before { content: "·"; margin-right: 9px; color: #b0bbb2; }
+    .guide-content h3 { margin: 0 0 9px; font-size: 1.12rem; line-height: 1.3; letter-spacing: -.03em; }
+    .guide-content p { min-height: 52px; margin: 0 0 17px; color: var(--muted); font-size: .82rem; line-height: 1.6; }
+    .guide-content .text-link { font-size: .82rem; }
+    .empty-state { display: none; padding: 28px; border: 1px dashed #bdcbbb; border-radius: 18px; color: var(--muted); text-align: center; }
+    .empty-state.show { display: block; }
+
+    /* Tools */
+    .tools-section { padding: 96px 0; }
+    .tools-panel { position: relative; overflow: hidden; display: grid; grid-template-columns: .83fr 1.17fr; gap: 48px; padding: 48px; border-radius: 32px; background: var(--green-deep); color: #fff; }
+    .tools-panel::before { content: ""; position: absolute; width: 460px; height: 460px; left: -270px; bottom: -310px; border: 1px solid rgba(202,230,184,.15); border-radius: 50%; box-shadow: 0 0 0 45px rgba(202,230,184,.035), 0 0 0 90px rgba(202,230,184,.025); }
+    .tools-intro { position: relative; z-index: 1; padding: 14px 0; }
+    .tools-intro .eyebrow { color: #c6e1b7; }
+    .tools-intro h2 { margin: 17px 0 15px; font-size: clamp(2.2rem, 4vw, 3.25rem); line-height: 1.06; letter-spacing: -.06em; }
+    .tools-intro p { max-width: 360px; margin: 0; color: #c5d7cc; font-size: .95rem; line-height: 1.75; }
+    .tool-points { display: grid; gap: 12px; margin-top: 28px; }
+    .tool-points span { display: flex; align-items: center; gap: 9px; color: #deeadf; font-size: .81rem; font-weight: 650; }
+    .tool-points svg { color: #bce39c; }
+    .calculator-card { position: relative; z-index: 1; padding: 27px; border: 1px solid rgba(255,255,255,.55); border-radius: 23px; background: #fff; color: var(--ink); box-shadow: 0 18px 45px rgba(0,0,0,.13); }
+    .calc-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 21px; }
+    .calc-head h3 { margin: 0 0 5px; font-size: 1.13rem; letter-spacing: -.03em; }
+    .calc-head p { margin: 0; color: var(--muted); font-size: .76rem; }
+    .calc-badge { padding: 6px 9px; border-radius: 999px; background: #e9f3e4; color: #4a7640; font-size: .65rem; font-weight: 800; white-space: nowrap; }
+    .calc-tabs { display: flex; gap: 5px; padding: 4px; margin-bottom: 21px; border-radius: 12px; background: #f0f3ed; }
+    .calc-tab { flex: 1; padding: 9px 8px; border: 0; border-radius: 9px; background: transparent; color: #78857d; font-size: .76rem; font-weight: 760; cursor: pointer; }
+    .calc-tab[aria-selected="true"] { background: #fff; color: var(--green); box-shadow: 0 2px 8px rgba(22,53,39,.08); }
+    .calc-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { color: #506159; font-size: .75rem; font-weight: 750; }
+    .field input, .field select { width: 100%; height: 45px; padding: 0 12px; border: 1px solid #dce4da; border-radius: 10px; background: #fbfcfa; color: var(--ink); outline: none; }
+    .field input:focus, .field select:focus { border-color: #83a989; box-shadow: 0 0 0 3px rgba(103,145,99,.12); }
+    .field-hint { color: #87948c; font-size: .66rem; }
+    .calc-results { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 21px; }
+    .result-box { padding: 15px; border-radius: 13px; background: #edf4e9; }
+    .result-box.secondary { background: #f5f1e9; }
+    .result-box span { display: block; color: #718077; font-size: .68rem; font-weight: 700; }
+    .result-box strong { display: block; margin-top: 4px; color: var(--green); font-size: 1.45rem; line-height: 1.2; letter-spacing: -.04em; }
+    .result-box.secondary strong { color: #946b40; }
+    .calc-note { margin: 14px 0 0; color: #8a968e; font-size: .66rem; line-height: 1.5; }
+    .calc-error { min-height: 18px; margin: 8px 0 0; color: #a44b3e; font-size: .72rem; }
+
+    /* Comparison band */
+    .comparison-section { background: #eeefe8; }
+    .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .comparison-card { display: flex; gap: 20px; align-items: flex-start; padding: 26px; border: 1px solid #dce3da; border-radius: 20px; background: #fff; }
+    .comparison-icon { display: grid; flex: 0 0 50px; width: 50px; height: 50px; place-items: center; border-radius: 15px; background: #e7f0e3; color: var(--green); }
+    .comparison-card h3 { margin: 1px 0 7px; font-size: 1.04rem; letter-spacing: -.025em; }
+    .comparison-card p { margin: 0 0 13px; color: var(--muted); font-size: .82rem; line-height: 1.6; }
+    .comparison-card .text-link { font-size: .8rem; }
+
+    /* Editorial promise */
+    .promise-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 68px; }
+    .promise-art { position: relative; min-height: 340px; overflow: hidden; border-radius: 28px; background: #e4ebdc; }
+    .promise-art::before { content: ""; position: absolute; width: 300px; height: 300px; left: 50%; top: 50%; transform: translate(-50%,-50%); border: 1px solid rgba(40,86,61,.17); border-radius: 50%; box-shadow: 0 0 0 35px rgba(40,86,61,.035), 0 0 0 70px rgba(40,86,61,.025); }
+    .promise-house { position: absolute; width: 245px; height: 220px; left: 50%; top: 50%; transform: translate(-50%,-43%); color: #245b46; }
+    .promise-stamp { position: absolute; right: 22px; bottom: 23px; display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; background: rgba(255,255,255,.87); color: #41664f; font-size: .74rem; font-weight: 780; box-shadow: 0 8px 20px rgba(33,66,47,.08); }
+    .promise-copy h2 { margin: 13px 0 17px; font-size: clamp(2.1rem, 4vw, 3.1rem); line-height: 1.07; letter-spacing: -.06em; }
+    .promise-copy > p { margin: 0; color: var(--muted); font-size: .96rem; line-height: 1.8; }
+    .promise-list { display: grid; gap: 17px; margin: 27px 0 0; padding: 0; list-style: none; }
+    .promise-list li { display: flex; gap: 12px; align-items: flex-start; }
+    .promise-list .check { display: grid; flex: 0 0 25px; width: 25px; height: 25px; place-items: center; border-radius: 50%; background: #e7f0e3; color: var(--green); }
+    .promise-list strong { display: block; margin-bottom: 2px; font-size: .87rem; }
+    .promise-list span:last-child { display: block; color: var(--muted); font-size: .77rem; line-height: 1.5; }
+
+    /* FAQ */
+    .faq-section { padding-top: 78px; background: #eeefe8; }
+    .faq-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 70px; }
+    .faq-intro h2 { margin: 13px 0 13px; font-size: clamp(2rem, 3.6vw, 2.8rem); line-height: 1.08; letter-spacing: -.055em; }
+    .faq-intro p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .faq-list { border-top: 1px solid #d7dfd5; }
+    .faq-item { border-bottom: 1px solid #d7dfd5; }
+    .faq-question { display: flex; width: 100%; justify-content: space-between; align-items: center; gap: 20px; padding: 19px 0; border: 0; background: transparent; text-align: left; font-size: .91rem; font-weight: 760; cursor: pointer; }
+    .faq-question svg { flex: 0 0 auto; color: #6b8573; transition: transform .2s ease; }
+    .faq-question[aria-expanded="true"] svg { transform: rotate(45deg); }
+    .faq-answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .22s ease; }
+    .faq-answer > div { overflow: hidden; }
+    .faq-answer p { max-width: 650px; margin: 0; padding: 0 35px 18px 0; color: var(--muted); font-size: .83rem; line-height: 1.75; }
+    .faq-item.open .faq-answer { grid-template-rows: 1fr; }
+
+    /* Footer */
+    .site-footer { padding: 62px 0 24px; background: #123a30; color: #fff; }
+    .footer-top { display: grid; grid-template-columns: 1.4fr .7fr .7fr .8fr; gap: 45px; padding-bottom: 48px; }
+    .footer-brand .brand-name strong { color: #fff; }
+    .footer-brand .brand-name span { color: #b5c8bc; }
+    .footer-brand p { max-width: 320px; margin: 18px 0 0; color: #b8cbc0; font-size: .81rem; line-height: 1.75; }
+    .footer-col h3 { margin: 4px 0 17px; color: #d6e7d9; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; }
+    .footer-col a { display: block; width: fit-content; margin: 11px 0; color: #b8cbc0; font-size: .8rem; transition: color .2s ease; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 21px; border-top: 1px solid rgba(255,255,255,.15); color: #a9c0b3; font-size: .72rem; }
+    .footer-bottom-links { display: flex; flex-wrap: wrap; gap: 20px; }
+    .footer-bottom a:hover { color: #fff; }
+    .disclosure { max-width: 730px; margin-top: 14px; color: #91ad9e; font-size: .67rem; line-height: 1.6; }
+    .back-top { position: fixed; right: 22px; bottom: 22px; z-index: 50; display: grid; width: 45px; height: 45px; place-items: center; border: 1px solid rgba(255,255,255,.25); border-radius: 14px; background: var(--green); color: #fff; box-shadow: 0 8px 22px rgba(15,51,40,.23); cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(10px); transition: .2s ease; }
+    .back-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+
+    /* Dark theme */
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --page: #101d19; --surface: #172822; --surface-soft: #1c3028; --ink: #edf4ee;
+      --muted: #a7b8ad; --line: #2b4237; --green: #a8d18e; --green-deep: #0c2922;
+      --green-pale: #263d30; --orange-pale: #47372a; --shadow: 0 20px 60px rgba(0,0,0,.25); --shadow-small: 0 9px 28px rgba(0,0,0,.2);
+    }
+    html[data-theme="dark"] .site-header { background: rgba(16,29,25,.91); border-color: var(--line); }
+    html[data-theme="dark"] .brand-mark { color: #173b2c; background: #b7df9a; }
+    html[data-theme="dark"] .header-cta, html[data-theme="dark"] .button-primary { background: #3c7655; color: #fff; }
+    html[data-theme="dark"] .header-cta:hover, html[data-theme="dark"] .button-primary:hover { background: #4b8964; }
+    html[data-theme="dark"] .brand-name span, html[data-theme="dark"] .desktop-nav a { color: #a7b8ad; }
+    html[data-theme="dark"] .icon-button, html[data-theme="dark"] .button-secondary { background: var(--surface); border-color: var(--line); color: var(--ink); }
+    html[data-theme="dark"] .hero::before { border-color: rgba(180,220,170,.1); }
+    html[data-theme="dark"] .hero-kicker { background: var(--surface); border-color: var(--line); color: #c5e4b5; }
+    html[data-theme="dark"] .hero-lede, html[data-theme="dark"] .hero-notes { color: #a7b8ad; }
+    html[data-theme="dark"] .art-orbit, html[data-theme="dark"] .art-orbit::before, html[data-theme="dark"] .art-orbit::after { border-color: #293f34; }
+    html[data-theme="dark"] .trust-strip, html[data-theme="dark"] .guides-section, html[data-theme="dark"] .comparison-section, html[data-theme="dark"] .faq-section { background: #14241e; border-color: var(--line); }
+    html[data-theme="dark"] .trust-item { color: #bdcbbf; }
+    html[data-theme="dark"] .category-card, html[data-theme="dark"] .guide-card, html[data-theme="dark"] .comparison-card { background: var(--surface); border-color: var(--line); }
+    html[data-theme="dark"] .category-card p, html[data-theme="dark"] .guide-content p, html[data-theme="dark"] .comparison-card p { color: var(--muted); }
+    html[data-theme="dark"] .guide-visual.green { background: #2a4033; } html[data-theme="dark"] .guide-visual.peach { background: #493a2e; }
+    html[data-theme="dark"] .guide-visual.blue { background: #293e40; } html[data-theme="dark"] .guide-visual.olive { background: #3a402d; }
+    html[data-theme="dark"] .guide-visual.lilac { background: #393447; } html[data-theme="dark"] .guide-visual.sand { background: #443a2e; }
+    html[data-theme="dark"] .search-input, html[data-theme="dark"] .field input, html[data-theme="dark"] .field select { background: #1d3028; border-color: #385143; color: var(--ink); }
+    html[data-theme="dark"] .search-shortcut { background: #263b30; border-color: #3a5044; color: #b1c1b5; }
+    html[data-theme="dark"] .tools-panel { background: #0b2821; }
+    html[data-theme="dark"] .calculator-card { background: #172822; border-color: #3b5145; color: var(--ink); }
+    html[data-theme="dark"] .calc-tabs { background: #22372c; }
+    html[data-theme="dark"] .calc-tab[aria-selected="true"] { background: #31483a; color: #d2e9c3; }
+    html[data-theme="dark"] .calc-head p, html[data-theme="dark"] .field label { color: #b4c4b8; }
+    html[data-theme="dark"] .result-box { background: #263f30; } html[data-theme="dark"] .result-box.secondary { background: #40372b; }
+    html[data-theme="dark"] .result-box span, html[data-theme="dark"] .calc-note { color: #a7b8ad; }
+    html[data-theme="dark"] .promise-art { background: #253b2e; }
+    html[data-theme="dark"] .promise-copy > p, html[data-theme="dark"] .promise-list span:last-child, html[data-theme="dark"] .faq-intro p { color: var(--muted); }
+    html[data-theme="dark"] .faq-list, html[data-theme="dark"] .faq-item { border-color: var(--line); }
+    html[data-theme="dark"] .faq-question { color: var(--ink); }
+    html[data-theme="dark"] .faq-answer p { color: var(--muted); }
+    html[data-theme="dark"] .footer-col a, html[data-theme="dark"] .footer-brand p { color: #b8cbc0; }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .desktop-nav { gap: 17px; }
+      .desktop-nav a { font-size: .81rem; }
+      .header-cta { padding: 11px 15px; }
+      .hero-grid { gap: 30px; }
+      .hero-art { min-height: 420px; }
+      .house-scene { min-height: 360px; }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); }
+      .tools-panel { gap: 28px; padding: 34px; }
+      .promise-grid { gap: 40px; }
+      .faq-layout { gap: 40px; }
+    }
+    @media (max-width: 760px) {
+      .container { width: min(100% - 34px, var(--max)); }
+      .header-inner { min-height: 70px; gap: 12px; }
+      .desktop-nav {
+        position: fixed; top: 70px; left: 0; right: 0; display: flex; flex-direction: column; align-items: stretch;
+        gap: 0; padding: 12px 24px 24px; border-bottom: 1px solid var(--line); background: var(--page);
+        box-shadow: 0 18px 25px rgba(18,43,32,.08); opacity: 0; visibility: hidden; transform: translateY(-8px); transition: .2s ease;
+      }
+      .desktop-nav.open { opacity: 1; visibility: visible; transform: translateY(0); }
+      .desktop-nav a { padding: 13px 4px; border-bottom: 1px solid var(--line); font-size: .94rem; }
+      .desktop-nav a:last-child { border-bottom: 0; }
+      .menu-toggle { display: grid; }
+      .header-cta { display: none; }
+      .hero { padding: 52px 0 42px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 22px; }
+      .hero-copy { padding: 0; }
+      .hero h1 { max-width: 600px; font-size: clamp(3rem, 11vw, 4.8rem); }
+      .hero-art { min-height: 390px; margin-top: 8px; }
+      .house-scene { width: min(100% - 28px, 475px); min-height: 350px; }
+      .art-orbit { width: 360px; height: 360px; }
+      .scene-chip.one { left: -2px; bottom: 49px; }
+      .scene-chip.two { right: -3px; top: 91px; }
+      .hero-scroll { display: none; }
+      .trust-inner { grid-template-columns: 1fr; gap: 14px; padding: 19px 0; }
+      .trust-item { justify-content: flex-start; }
+      .section { padding: 70px 0; }
+      .guides-top { display: block; }
+      .search-wrap { width: 100%; margin-top: 23px; }
+      .guide-grid { grid-template-columns: repeat(2, 1fr); }
+      .tools-panel { grid-template-columns: 1fr; padding: 30px; }
+      .tools-intro { padding: 0; }
+      .tools-intro p { max-width: 560px; }
+      .comparison-grid { grid-template-columns: 1fr; }
+      .promise-grid { grid-template-columns: 1fr; gap: 32px; }
+      .promise-art { min-height: 300px; }
+      .faq-layout { grid-template-columns: 1fr; gap: 26px; }
+      .footer-top { grid-template-columns: 1.3fr 1fr 1fr; gap: 30px; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 520px) {
+      .brand-name strong { font-size: .92rem; }
+      .brand-name span { font-size: .58rem; }
+      .brand-mark { width: 39px; height: 39px; }
+      .hero h1 { font-size: clamp(2.8rem, 13vw, 4rem); }
+      .hero-actions { align-items: stretch; flex-direction: column; max-width: 290px; }
+      .hero-actions a { width: 100%; }
+      .hero-notes { gap: 12px 17px; }
+      .hero-art { min-height: 330px; }
+      .house-scene { min-height: 300px; border-radius: 25px; }
+      .house-drawing { top: 75px; width: 280px; height: 225px; }
+      .scene-label { top: 20px; left: 21px; }
+      .scene-sun { top: 64px; right: 58px; width: 39px; height: 39px; }
+      .scene-chip { padding: 9px 11px; }
+      .scene-chip.one { left: -4px; bottom: 28px; }
+      .scene-chip.two { right: -5px; top: 78px; }
+      .chip-icon { width: 29px; height: 29px; }
+      .scene-chip strong { font-size: .72rem; }
+      .scene-chip small { font-size: .6rem; }
+      .art-orbit { width: 305px; height: 305px; }
+      .categories-grid { gap: 11px; }
+      .category-card { min-height: 205px; padding: 18px; }
+      .category-card h3 { margin-top: 15px; font-size: .98rem; }
+      .category-card p { font-size: .76rem; }
+      .category-card .card-arrow { right: 16px; bottom: 17px; }
+      .guide-grid { grid-template-columns: 1fr; }
+      .guide-visual { height: 190px; }
+      .guide-content p { min-height: 0; }
+      .tools-panel { padding: 24px 17px; border-radius: 24px; }
+      .calculator-card { padding: 20px 16px; }
+      .calc-head { display: block; }
+      .calc-badge { display: inline-block; margin-top: 10px; }
+      .calc-fields { gap: 12px; }
+      .field label { font-size: .7rem; }
+      .field input, .field select { padding: 0 9px; font-size: .88rem; }
+      .result-box { padding: 12px; }
+      .result-box strong { font-size: 1.2rem; }
+      .comparison-card { padding: 20px; gap: 14px; }
+      .comparison-icon { flex-basis: 43px; width: 43px; height: 43px; }
+      .promise-art { min-height: 260px; }
+      .promise-house { width: 205px; height: 190px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 23px; }
+      .footer-brand { grid-column: 1 / -1; }
+      .footer-bottom { flex-direction: column; }
+      .back-top { right: 14px; bottom: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Home Energy Upgrade",
+    "description": "Practical guides and tools for smarter home energy upgrades.",
+    "inLanguage": "en"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Reusable inline SVG icons: no icon font or external library required. -->
+  <svg aria-hidden="true" width="0" height="0" style="position:absolute;overflow:hidden">
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 21v-7h6v7" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20.5 3.5C12 3 5.3 5.7 4 12.1c-.8 3.7 1.7 6.5 5.1 6.4 6.7-.2 10.8-7.2 11.4-15z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3 21c3.5-5.2 7.4-8.5 12.5-11" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m8.5 12 2.2 2.2 4.8-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-heat" viewBox="0 0 24 24"><path d="M12 2v8m0 4v8M5 5l5 5m4 4 5 5M2 12h8m4 0h8M5 19l5-5m4-4 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 8h12a3 3 0 1 0-3-3M2 12h17a2.5 2.5 0 1 1-2.5 2.5M4 16h8a2.5 2.5 0 1 1-2.5 2.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5zm-9 9 9 5 9-5M3 16l9 5 9-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-droplet" viewBox="0 0 24 24"><path d="M12 2.8S5 10 5 14.5a7 7 0 0 0 14 0C19 10 12 2.8 12 2.8z" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M9 15.5a3 3 0 0 0 3 3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 1.8 7.2L21 11l-7.2 1.8L12 20l-1.8-7.2L3 11l7.2-1.8L12 2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m19 15 .8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+    <symbol id="i-calculator" viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M8 6h8v4H8zM8 14h2m4 0h2M8 18h2m4 0h2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5v-17zM4 18.5A2.5 2.5 0 0 1 6.5 16H20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 6h8M8 9h6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-sun-small" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Home Energy Upgrade home">
+        <span class="brand-mark"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-home"/></svg></span>
+        <span class="brand-name"><strong>Home Energy Upgrade</strong><span>Smarter homes, made clearer</span></span>
+      </a>
+      <nav class="desktop-nav" id="primary-nav" aria-label="Main navigation">
+        <a href="#topics">Explore topics</a>
+        <a href="#guides">Cost guides</a>
+        <a href="#tools">Calculators</a>
+        <a href="#comparisons">Compare options</a>
+        <a href="#about">Our approach</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" id="theme-toggle" type="button" aria-label="Switch to dark theme" title="Toggle theme">
+          <svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true"><use id="theme-icon" href="#i-moon"/></svg>
+        </button>
+        <a class="header-cta" href="#tools">Try the calculator <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <button class="icon-button menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-controls="primary-nav" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><use id="menu-icon" href="#i-menu"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="hero-kicker"><span class="kicker-dot"></span> A clearer way to improve your home</div>
+          <h1>Make your next upgrade a <em>smarter</em> one.</h1>
+          <p class="hero-lede">Straightforward guidance for better heating, cooling and home energy decisions. Understand your options, compare the real costs and plan improvements with confidence.</p>
+          <div class="hero-actions">
+            <a class="button-primary" href="#topics">Explore home upgrades <svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="button-secondary" href="#tools"><svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-calculator"/></svg> Use a free calculator</a>
+          </div>
+          <div class="hero-notes">
+            <span><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg> Practical cost breakdowns</span>
+            <span><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg> Clear product comparisons</span>
+            <span><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg> Helpful planning tools</span>
+            <span><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg> US · Canada · UK · Australia</span>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="Illustration of an energy-efficient home">
+          <div class="art-orbit" aria-hidden="true"></div>
+          <div class="house-scene">
+            <div class="scene-label">A more considered home</div>
+            <div class="scene-sun" aria-hidden="true"></div>
+            <svg class="house-drawing" viewBox="0 0 360 280" role="img" aria-label="Stylised house with solar panels, windows and greenery">
+              <defs>
+                <linearGradient id="roofFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8bd8a"/><stop offset="1" stop-color="#cf9567"/></linearGradient>
+                <linearGradient id="wallFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f5e8d0"/><stop offset="1" stop-color="#e3d3b8"/></linearGradient>
+              </defs>
+              <path d="M45 127 178 29l137 98v128H45z" fill="url(#wallFill)" stroke="#f8eddd" stroke-width="4" stroke-linejoin="round"/>
+              <path d="M25 132 178 18l157 114-12 16L178 43 37 148z" fill="url(#roofFill)" stroke="#f1c99e" stroke-width="3" stroke-linejoin="round"/>
+              <path d="m91 91 71-52 72 52-7 28-73-53-66 48z" fill="#315d4b" opacity=".95"/>
+              <path d="m103 91 57-42 57 42-5 20-56-41-52 38z" fill="none" stroke="#8ab18a" stroke-width="1.5"/>
+              <path d="M118 82v25m30-47v43m30-24v26m30-5v26" stroke="#a9c7a1" stroke-width="1.3" opacity=".75"/>
+              <rect x="75" y="151" width="64" height="66" rx="5" fill="#78a1a0" stroke="#fff7e9" stroke-width="5"/>
+              <path d="M107 153v62M77 184h60" stroke="#eaf0df" stroke-width="3"/>
+              <rect x="221" y="151" width="64" height="66" rx="5" fill="#78a1a0" stroke="#fff7e9" stroke-width="5"/>
+              <path d="M253 153v62m-30-31h60" stroke="#eaf0df" stroke-width="3"/>
+              <rect x="157" y="167" width="43" height="88" rx="4" fill="#996e4e" stroke="#f7e8d3" stroke-width="4"/>
+              <circle cx="190" cy="211" r="3" fill="#f4d49e"/>
+              <path d="M42 253h279" stroke="#bad49f" stroke-width="4" stroke-linecap="round"/>
+              <path d="M53 246q-8-27 10-39 17 17 4 39m-3-2q-5-30 16-44 14 22-9 44m214 0q-8-27 10-39 17 17 4 39m-3-2q-5-30 16-44 14 22-9 44" fill="#91b97c"/>
+              <path d="M28 247q-4-22 13-32 13 17 1 32m290 0q-4-22 13-32 13 17 1 32" fill="#719d69"/>
+            </svg>
+            <div class="scene-ground"></div>
+            <svg class="scene-wave" viewBox="0 0 480 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40c80 32 132-15 221 1s147 32 259-2v41H0z" fill="#6d9868" opacity=".32"/></svg>
+          </div>
+          <div class="scene-chip one"><span class="chip-icon"><svg width="19" height="19" viewBox="0 0 24 24"><use href="#i-leaf"/></svg></span><span><strong>Think long term</strong><small>Comfort, cost and efficiency</small></span></div>
+          <div class="scene-chip two"><span class="chip-icon"><svg width="19" height="19" viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span><strong>Choose with clarity</strong><small>Understand before you invest</small></span></div>
+        </div>
+      </div>
+      <div class="container hero-scroll"><span>Scroll to explore</span><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15m-6-6 6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </section>
+
+    <section class="trust-strip" aria-label="What you will find here">
+      <div class="container trust-inner">
+        <div class="trust-item"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg> Explained in plain language</div>
+        <div class="trust-item"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-calculator"/></svg> Numbers you can work through</div>
+        <div class="trust-item"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield"/></svg> Decisions grounded in research</div>
+      </div>
+    </section>
+
+    <section class="section" id="topics">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Explore the essentials</span>
+          <h2>Start with the upgrade<br>you are considering.</h2>
+          <p>Choose an area to explore practical explainers, cost factors, system comparisons and questions to ask before hiring a professional.</p>
+        </div>
+        <div class="categories-grid">
+          <a class="category-card" href="#guides" data-category="heat pumps">
+            <span class="category-icon"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heat"/></svg></span>
+            <h3>Heat pumps</h3><p>Understand system types, installation, running costs and climate suitability.</p>
+            <svg class="card-arrow" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+          <a class="category-card" href="#guides" data-category="hvac heating cooling">
+            <span class="category-icon"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wind"/></svg></span>
+            <h3>Heating &amp; cooling</h3><p>Compare central air, ductless systems, furnaces and equipment choices.</p>
+            <svg class="card-arrow" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+          <a class="category-card" href="#guides" data-category="insulation home envelope">
+            <span class="category-icon"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-layers"/></svg></span>
+            <h3>Insulation</h3><p>Learn about attic, wall and floor insulation, materials and comfort.</p>
+            <svg class="card-arrow" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+          <a class="category-card" href="#guides" data-category="water heaters hot water">
+            <span class="category-icon"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-droplet"/></svg></span>
+            <h3>Water heaters</h3><p>Explore heat-pump, tank and tankless water-heating options.</p>
+            <svg class="card-arrow" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section guides-section" id="guides">
+      <div class="container">
+        <div class="guides-top">
+          <div class="section-heading">
+            <span class="eyebrow">The useful details</span>
+            <h2>Guides for the decisions<br>that matter.</h2>
+            <p>Explore the questions homeowners should understand before comparing quotes or choosing equipment.</p>
+          </div>
+          <div class="search-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-search"/></svg>
+            <label for="guide-search" class="skip-link">Search guides</label>
+            <input class="search-input" id="guide-search" type="search" placeholder="Search topics and guides..." autocomplete="off">
+            <span class="search-shortcut" aria-hidden="true">Ctrl K</span>
+          </div>
+        </div>
+        <div class="guide-grid" id="guide-grid" aria-live="polite">
+          <article class="guide-card" data-search="heat pump installation cost price quote labor equipment home heating">
+            <div class="guide-visual green"><span class="guide-tag">Cost guide</span><svg class="guide-illustration" viewBox="0 0 120 120" aria-hidden="true"><rect x="22" y="25" width="76" height="70" rx="11" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="59" r="22" fill="none" stroke="currentColor" stroke-width="3"/><path d="M60 38c9 8 9 15 0 21-9-6-9-13 0-21zm21 21c-8 9-15 9-21 0 6-9 13-9 21 0zm-21 21c-9-8-9-15 0-21 9 6 9 13 0 21zm-21-21c8-9 15-9 21 0-6 9-13 9-21 0z" fill="currentColor" opacity=".72"/><path d="M38 104h44" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
+            <div class="guide-content"><div class="guide-meta"><span>Heat pumps</span><span>Planning guide</span></div><h3>What goes into the cost of a heat pump installation?</h3><p>Break down equipment, labour, home modifications and the details that can change a quote.</p><a class="text-link" href="/guides/heat-pump-installation-cost.html">Explore the cost factors <svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a></div>
+          </article>
+          <article class="guide-card" data-search="central air conditioner replacement cost hvac cooling system price">
+            <div class="guide-visual peach"><span class="guide-tag">System guide</span><svg class="guide-illustration" viewBox="0 0 120 120" aria-hidden="true"><rect x="23" y="24" width="74" height="72" rx="10" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="22" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="5" fill="currentColor"/><path d="M60 38c10 4 13 11 0 17-7-7-7-12 0-17zm22 22c-4 10-11 13-17 0 7-7 12-7 17 0zM60 82c-10-4-13-11 0-17 7 7 7 12 0 17zm-22-22c4-10 11-13 17 0-7 7-12 7-17 0z" fill="currentColor"/><path d="M42 104h36" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
+            <div class="guide-content"><div class="guide-meta"><span>HVAC</span><span>Replacement guide</span></div><h3>Planning a central air conditioner replacement</h3><p>Learn which equipment, ductwork, sizing and installation details deserve attention.</p><a class="text-link" href="/guides/central-air-conditioner-replacement.html">Understand the process <svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a></div>
+          </article>
+          <article class="guide-card" data-search="attic insulation types fiberglass cellulose spray foam r value cost">
+            <div class="guide-visual olive"><span class="guide-tag">Material guide</span><svg class="guide-illustration" viewBox="0 0 120 120" aria-hidden="true"><path d="M17 54 60 20l43 34v47H17z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M30 54h60M30 67h60M30 80h60M30 93h60" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".75"/><path d="m43 41 17-13 17 13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="guide-content"><div class="guide-meta"><span>Insulation</span><span>Home envelope</span></div><h3>Attic insulation: materials, performance and cost factors</h3><p>Compare common insulation types and understand R-value, air sealing and ventilation.</p><a class="text-link" href="/guides/attic-insulation-types-cost.html">Compare insulation types <svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a></div>
+          </article>
+          <article class="guide-card" data-search="heat pump versus gas furnace heating comparison efficiency fuel costs">
+            <div class="guide-visual blue"><span class="guide-tag">Comparison</span><svg class="guide-illustration" viewBox="0 0 120 120" aria-hidden="true"><path d="M60 17v86M21 60h78" stroke="currentColor" stroke-width="2.5" stroke-dasharray="4 5"/><circle cx="60" cy="60" r="39" fill="none" stroke="currentColor" stroke-width="3"/><path d="M42 46c8-13 28-12 35 0M78 74c-8 13-28 12-35 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="m70 39 8 7-10 3M50 81l-8-7 10-3" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="guide-content"><div class="guide-meta"><span>Heating</span><span>Side-by-side</span></div><h3>Heat pump vs. gas furnace: what should you compare?</h3><p>Look beyond the purchase price to climate, fuel costs, comfort and existing equipment.</p><a class="text-link" href="/guides/heat-pump-vs-gas-furnace.html">See what to compare <svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a></div>
+          </article>
+          <article class="guide-card" data-search="heat pump water heater installation operating cost hot water tank">
+            <div class="guide-visual lilac"><span class="guide-tag">Buying guide</span><svg class="guide-illustration" viewBox="0 0 120 120" aria-hidden="true"><rect x="35" y="17" width="50" height="88" rx="13" fill="none" stroke="currentColor" stroke-width="3"/><path d="M43 34h34M43 82h34" stroke="currentColor" stroke-width="2.5"/><path d="M60 43c-7 10-10 15-10 21a10 10 0 0 0 20 0c0-6-3-11-10-21z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M47 11h26" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
+            <div class="guide-content"><div class="guide-meta"><span>Water heating</span><span>Buying guide</span></div><h3>Is a heat-pump water heater right for your home?</h3><p>Understand space, noise, climate, hot-water demand and installation considerations.</p><a class="text-link" href="/guides/heat-pump-water-heater.html">Review the key factors <svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a></div>
+          </article>
+          <article class="guide-card" data-search="home energy audit assessment insulation air leaks hvac efficiency checklist">
+            <div class="guide-visual sand"><span class="guide-tag">Home planning</span><svg class="guide-illustration" viewBox="0 0 120 120" aria-hidden="true"><path d="M25 19h52l18 18v64H25z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M77 19v19h18M40 55h40M40 68h40M40 81h26" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="83" cy="87" r="16" fill="#eee5d6" stroke="currentColor" stroke-width="3"/><path d="m76 87 5 5 10-11" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="guide-content"><div class="guide-meta"><span>Home efficiency</span><span>Checklist</span></div><h3>What to look for in a home energy assessment</h3><p>Prepare for an assessment and learn how air leaks, insulation and equipment interact.</p><a class="text-link" href="/guides/home-energy-assessment.html">Prepare your checklist <svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a></div>
+          </article>
+        </div>
+        <div class="empty-state" id="empty-state" role="status">No matching guides found. Try a broader search such as “heating”, “insulation” or “cost”.</div>
+      </div>
+    </section>
+
+    <section class="tools-section" id="tools">
+      <div class="container">
+        <div class="tools-panel">
+          <div class="tools-intro">
+            <span class="eyebrow">Put the numbers to work</span>
+            <h2>Plan with a little more clarity.</h2>
+            <p>Use these simple estimators to explore possible energy costs and savings. Change the assumptions to see how the results move.</p>
+            <div class="tool-points">
+              <span><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg> No sign-up or account required</span>
+              <span><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg> Your inputs stay in this page</span>
+              <span><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg> Adjust assumptions at any time</span>
+            </div>
+          </div>
+          <div class="calculator-card">
+            <div class="calc-head">
+              <div><h3>Home energy quick estimator</h3><p>Explore a simple scenario for your home.</p></div>
+              <span class="calc-badge">Free tool</span>
+            </div>
+            <div class="calc-tabs" role="tablist" aria-label="Choose calculator">
+              <button class="calc-tab" type="button" role="tab" id="tab-savings" aria-selected="true" aria-controls="panel-savings">Upgrade savings</button>
+              <button class="calc-tab" type="button" role="tab" id="tab-running" aria-selected="false" aria-controls="panel-running" tabindex="-1">HVAC running cost</button>
+            </div>
+            <div id="panel-savings" role="tabpanel" aria-labelledby="tab-savings">
+              <div class="calc-fields">
+                <div class="field"><label for="currency">Currency</label><select id="currency"><option value="USD">USD — $</option><option value="CAD">CAD — $</option><option value="GBP">GBP — £</option><option value="AUD">AUD — $</option><option value="EUR">EUR — €</option></select></div>
+                <div class="field"><label for="annual-spend">Current annual energy spend</label><input id="annual-spend" type="number" min="0" max="1000000" step="100" value="2400" inputmode="decimal"><span class="field-hint">Enter your own annual estimate.</span></div>
+                <div class="field"><label for="savings-rate">Estimated bill reduction</label><select id="savings-rate"><option value="10">10% — cautious scenario</option><option value="20" selected>20% — example scenario</option><option value="30">30% — higher scenario</option><option value="40">40% — ambitious scenario</option><option value="50">50% — upper scenario</option></select></div>
+                <div class="field"><label for="project-cost">Estimated project cost</label><input id="project-cost" type="number" min="0" max="10000000" step="500" value="12000" inputmode="decimal"></div>
+              </div>
+              <div class="calc-results" aria-live="polite">
+                <div class="result-box"><span>Illustrative annual savings</span><strong id="annual-savings">$480</strong></div>
+                <div class="result-box secondary"><span>Simple payback period</span><strong id="payback-period">25 years</strong></div>
+              </div>
+              <p class="calc-error" id="savings-error" role="status"></p>
+              <p class="calc-note">Illustrative only. The reduction percentage is an assumption you choose, not a prediction. Actual results depend on your home, climate, energy rates, equipment, use and installation quality. Payback does not include financing, maintenance, incentives or future rate changes.</p>
+            </div>
+            <div id="panel-running" role="tabpanel" aria-labelledby="tab-running" hidden>
+              <div class="calc-fields">
+                <div class="field"><label for="power">Equipment input (kW)</label><input id="power" type="number" min="0" max="100" step="0.1" value="2.5" inputmode="decimal"></div>
+                <div class="field"><label for="hours">Hours used per day</label><input id="hours" type="number" min="0" max="24" step="0.5" value="8" inputmode="decimal"></div>
+                <div class="field"><label for="days">Days used per month</label><input id="days" type="number" min="0" max="31" step="1" value="30" inputmode="decimal"></div>
+                <div class="field"><label for="rate">Electricity price per kWh</label><input id="rate" type="number" min="0" max="1000" step="0.01" value="0.18" inputmode="decimal"></div>
+                <div class="field full"><label for="run-currency">Currency</label><select id="run-currency"><option value="USD">USD — $</option><option value="CAD">CAD — $</option><option value="GBP">GBP — £</option><option value="AUD">AUD — $</option><option value="EUR">EUR — €</option></select></div>
+              </div>
+              <div class="calc-results" aria-live="polite">
+                <div class="result-box"><span>Estimated monthly use</span><strong id="monthly-use">600 kWh</strong></div>
+                <div class="result-box secondary"><span>Estimated monthly cost</span><strong id="monthly-cost">$108</strong></div>
+              </div>
+              <p class="calc-error" id="running-error" role="status"></p>
+              <p class="calc-note">Calculation: input power × hours per day × days per month. Actual HVAC consumption varies with cycling, weather, thermostat settings, system efficiency and the home's heat loss or gain. Use the equipment's actual input rating where available.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section comparison-section" id="comparisons">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Compare before you commit</span>
+          <h2>Better decisions start<br>with the right questions.</h2>
+          <p>There is rarely one best option for every home. Compare the factors that affect comfort, cost, installation and long-term use.</p>
+        </div>
+        <div class="comparison-grid">
+          <article class="comparison-card"><span class="comparison-icon"><svg width="25" height="25" viewBox="0 0 24 24"><use href="#i-heat"/></svg></span><div><h3>Heat pump vs. gas furnace</h3><p>Compare local energy prices, climate performance, existing equipment, backup heat and installation needs.</p><a class="text-link" href="/guides/heat-pump-vs-gas-furnace.html">View comparison questions <svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a></div></article>
+          <article class="comparison-card"><span class="comparison-icon"><svg width="25" height="25" viewBox="0 0 24 24"><use href="#i-layers"/></svg></span><div><h3>Fiberglass vs. cellulose insulation</h3><p>Consider installation method, air sealing, moisture conditions, access and the required thermal performance.</p><a class="text-link" href="/guides/fiberglass-vs-cellulose-insulation.html">View material factors <svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a></div></article>
+          <article class="comparison-card"><span class="comparison-icon"><svg width="25" height="25" viewBox="0 0 24 24"><use href="#i-wind"/></svg></span><div><h3>Ducted vs. ductless heating and cooling</h3><p>Think about room layout, existing ducts, zoning, aesthetics, sound and maintenance access.</p><a class="text-link" href="/guides/ducted-vs-ductless-hvac.html">Explore the differences <svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a></div></article>
+          <article class="comparison-card"><span class="comparison-icon"><svg width="25" height="25" viewBox="0 0 24 24"><use href="#i-droplet"/></svg></span><div><h3>Heat-pump vs. conventional water heater</h3><p>Compare household hot-water demand, installation space, sound, climate and energy use.</p><a class="text-link" href="/guides/heat-pump-vs-conventional-water-heater.html">Review the key trade-offs <svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container promise-grid">
+        <div class="promise-art" aria-label="Illustration representing a carefully planned home upgrade">
+          <svg class="promise-house" viewBox="0 0 260 230" aria-hidden="true"><path d="m25 94 105-75 105 75v114H25z" fill="#f3ead9" stroke="#2d624b" stroke-width="4" stroke-linejoin="round"/><path d="m12 99 118-86 118 86" fill="none" stroke="#2d624b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><rect x="48" y="116" width="55" height="56" rx="5" fill="#a1c2ad" stroke="#2d624b" stroke-width="4"/><path d="M75.5 117v54m-26-27h52" stroke="#e8f0e6" stroke-width="3"/><rect x="157" y="116" width="55" height="56" rx="5" fill="#a1c2ad" stroke="#2d624b" stroke-width="4"/><path d="M184.5 117v54m-26-27h52" stroke="#e8f0e6" stroke-width="3"/><rect x="111" y="145" width="38" height="63" rx="4" fill="#bc8b5f" stroke="#2d624b" stroke-width="4"/><circle cx="139" cy="178" r="3" fill="#f6e4c5"/></svg>
+          <span class="promise-stamp"><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-leaf"/></svg> Practical over hype</span>
+        </div>
+        <div class="promise-copy">
+          <span class="eyebrow">Our approach</span>
+          <h2>Clear information.<br>Thoughtful decisions.</h2>
+          <p>Home upgrades can involve significant spending and technical trade-offs. Our aim is to make the research easier to understand, so you can have better conversations with installers and make choices that suit your home.</p>
+          <ul class="promise-list">
+            <li><span class="check"><svg width="15" height="15" viewBox="0 0 24 24"><use href="#i-check"/></svg></span><span><strong>Explain the factors, not just a headline price.</strong><span>Costs vary by location, property, equipment and the work required.</span></span></li>
+            <li><span class="check"><svg width="15" height="15" viewBox="0 0 24 24"><use href="#i-check"/></svg></span><span><strong>Make assumptions visible.</strong><span>Calculators should show what goes into an estimate and what it leaves out.</span></span></li>
+            <li><span class="check"><svg width="15" height="15" viewBox="0 0 24 24"><use href="#i-check"/></svg></span><span><strong>Encourage informed professional advice.</strong><span>Use independent assessments and qualified local contractors for property-specific decisions.</span></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq-section" id="faq">
+      <div class="container faq-layout">
+        <div class="faq-intro"><span class="eyebrow">A few useful answers</span><h2>Before you get started.</h2><p>Some common questions about researching and planning home energy improvements.</p></div>
+        <div class="faq-list">
+          <div class="faq-item open"><button class="faq-question" type="button" aria-expanded="true"><span>Where should I start with home energy improvements?</span><svg width="19" height="19" viewBox="0 0 24 24"><use href="#i-plus"/></svg></button><div class="faq-answer"><div><p>Start by understanding the home's current condition: heating and cooling equipment, insulation, air leakage, ventilation and energy use. A qualified home energy assessment can help identify which improvements are most relevant before you request quotes.</p></div></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Are the cost and savings figures exact?</span><svg width="19" height="19" viewBox="0 0 24 24"><use href="#i-plus"/></svg></button><div class="faq-answer"><div><p>No. Costs depend on location, labour, equipment, property conditions and project scope. Savings also depend on climate, energy rates, system design and how a home is used. Treat example figures and calculator outputs as planning estimates, then obtain local assessments and written quotes.</p></div></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Do I need to replace my heating system and insulation together?</span><svg width="19" height="19" viewBox="0 0 24 24"><use href="#i-plus"/></svg></button><div class="faq-answer"><div><p>Not necessarily. The right sequence depends on the home's condition and the equipment being considered. Air sealing and insulation can change heating and cooling loads, so discuss the building envelope and equipment sizing together before committing to a major system replacement.</p></div></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Can I use these guides outside the United States?</span><svg width="19" height="19" viewBox="0 0 24 24"><use href="#i-plus"/></svg></button><div class="faq-answer"><div><p>Many principles apply internationally, but energy prices, climate, building codes, incentives, equipment standards and installation practices differ. Check local rules and use region-specific information for decisions in Canada, the United Kingdom, Australia or another country.</p></div></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Does this website replace advice from an installer or energy assessor?</span><svg width="19" height="19" viewBox="0 0 24 24"><use href="#i-plus"/></svg></button><div class="faq-answer"><div><p>No. This website is an educational resource, not a substitute for an on-site assessment, professional design, product documentation or advice from qualified local tradespeople. Always verify safety, sizing, code and installation requirements for your property.</p></div></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="brand" href="#top" aria-label="Home Energy Upgrade home"><span class="brand-mark"><svg width="24" height="24" viewBox="0 0 24 24"><use href="#i-home"/></svg></span><span class="brand-name"><strong>Home Energy Upgrade</strong><span>Smarter homes, made clearer</span></span></a>
+          <p>Practical guides and simple tools for homeowners researching heating, cooling, insulation and energy improvements.</p>
+          <p class="disclosure">Some pages may include advertising or affiliate links in the future. Any commercial relationship should be clearly disclosed and should not determine editorial conclusions.</p>
+        </div>
+        <div class="footer-col"><h3>Explore</h3><a href="#topics">Home upgrade topics</a><a href="#guides">Cost guides</a><a href="#comparisons">Comparisons</a><a href="#tools">Calculators</a></div>
+        <div class="footer-col"><h3>Learn</h3><a href="#about">Our approach</a><a href="#faq">FAQs</a><a href="#guides">Latest guides</a></div>
+        <div class="footer-col"><h3>Information</h3><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy policy</a><a href="/disclaimer.html">Disclaimer</a></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year"></span> Home Energy Upgrade. All rights reserved.</span><div class="footer-bottom-links"><a href="/privacy.html">Privacy</a><a href="/disclaimer.html">Disclaimer</a><a href="#top">Back to top ↑</a></div></div>
+    </div>
+  </footer>
+
+  <button class="back-top" id="back-top" type="button" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const $ = (selector, root = document) => root.querySelector(selector);
+      const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+
+      // Footer year
+      $('#year').textContent = new Date().getFullYear();
+
+      // Responsive navigation
+      const menuToggle = $('#menu-toggle');
+      const nav = $('#primary-nav');
+      const menuIcon = $('#menu-icon');
+      const closeMenu = () => {
+        nav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Open navigation');
+        menuIcon.setAttribute('href', '#i-menu');
+        document.body.classList.remove('menu-open');
+      };
+      menuToggle.addEventListener('click', () => {
+        const willOpen = menuToggle.getAttribute('aria-expanded') !== 'true';
+        menuToggle.setAttribute('aria-expanded', String(willOpen));
+        menuToggle.setAttribute('aria-label', willOpen ? 'Close navigation' : 'Open navigation');
+        menuIcon.setAttribute('href', willOpen ? '#i-close' : '#i-menu');
+        nav.classList.toggle('open', willOpen);
+        document.body.classList.toggle('menu-open', willOpen);
+      });
+      $$('#primary-nav a').forEach(link => link.addEventListener('click', closeMenu));
+      document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
+      window.addEventListener('resize', () => { if (window.innerWidth > 760) closeMenu(); });
+
+      // Theme toggle with a saved preference and system-theme fallback
+      const themeToggle = $('#theme-toggle');
+      const themeIcon = $('#theme-icon');
+      const savedTheme = (() => { try { return localStorage.getItem('heu-theme'); } catch (_) { return null; } })();
+      const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const applyTheme = theme => {
+        document.documentElement.dataset.theme = theme;
+        const dark = theme === 'dark';
+        themeIcon.setAttribute('href', dark ? '#i-sun-small' : '#i-moon');
+        themeToggle.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+        themeToggle.title = dark ? 'Switch to light theme' : 'Switch to dark theme';
+      };
+      applyTheme(savedTheme || (systemDark ? 'dark' : 'light'));
+      themeToggle.addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        try { localStorage.setItem('heu-theme', next); } catch (_) { /* Storage may be unavailable; theme still works for this visit. */ }
+      });
+
+      // Search the sample guide cards on this static homepage
+      const searchInput = $('#guide-search');
+      const guideCards = $$('.guide-card');
+      const emptyState = $('#empty-state');
+      const filterGuides = () => {
+        const term = searchInput.value.trim().toLowerCase();
+        let visible = 0;
+        guideCards.forEach(card => {
+          const haystack = (card.textContent + ' ' + (card.dataset.search || '')).toLowerCase();
+          const match = !term || haystack.includes(term);
+          card.hidden = !match;
+          if (match) visible++;
+        });
+        emptyState.classList.toggle('show', visible === 0);
+      };
+      searchInput.addEventListener('input', filterGuides);
+      document.addEventListener('keydown', event => {
+        if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+          event.preventDefault();
+          searchInput.focus();
+          searchInput.select();
+        }
+      });
+      $$('.category-card').forEach(card => card.addEventListener('click', () => {
+        const category = card.dataset.category || '';
+        searchInput.value = category.split(' ')[0];
+        filterGuides();
+      }));
+
+      // Calculator tabs
+      const tabs = [$('#tab-savings'), $('#tab-running')];
+      const panels = [$('#panel-savings'), $('#panel-running')];
+      const activateTab = index => {
+        tabs.forEach((tab, i) => {
+          const active = i === index;
+          tab.setAttribute('aria-selected', String(active));
+          tab.tabIndex = active ? 0 : -1;
+          panels[i].hidden = !active;
+        });
+      };
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => activateTab(index));
+        tab.addEventListener('keydown', event => {
+          if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+            event.preventDefault();
+            const next = event.key === 'ArrowRight' ? (index + 1) % tabs.length : (index + tabs.length - 1) % tabs.length;
+            activateTab(next);
+            tabs[next].focus();
+          }
+        });
+      });
+
+      // Currency formatting
+      const formatMoney = (value, currency) => {
+        try {
+          return new Intl.NumberFormat(undefined, { style: 'currency', currency, maximumFractionDigits: 0 }).format(value);
+        } catch (_) {
+          return `${currency} ${Math.round(value).toLocaleString()}`;
+        }
+      };
+      const numeric = id => Number($(id).value);
+      const validRange = (value, min, max) => Number.isFinite(value) && value >= min && value <= max;
+
+      // Upgrade savings estimate
+      const updateSavings = () => {
+        const spend = numeric('#annual-spend');
+        const rate = numeric('#savings-rate');
+        const cost = numeric('#project-cost');
+        const error = $('#savings-error');
+        const currency = $('#currency').value;
+        if (!validRange(spend, 0, 1000000) || !validRange(rate, 0, 100) || !validRange(cost, 0, 10000000)) {
+          error.textContent = 'Enter non-negative values within the stated limits.';
+          $('#annual-savings').textContent = '—';
+          $('#payback-period').textContent = '—';
+          return;
+        }
+        error.textContent = '';
+        const savings = spend * rate / 100;
+        $('#annual-savings').textContent = formatMoney(savings, currency);
+        $('#payback-period').textContent = savings > 0 ? `${(cost / savings).toFixed(1)} years` : (cost === 0 ? '0 years' : 'Not reached');
+      };
+      ['#annual-spend', '#savings-rate', '#project-cost', '#currency'].forEach(selector => $(selector).addEventListener('input', updateSavings));
+      updateSavings();
+
+      // HVAC energy use and cost estimate
+      const updateRunningCost = () => {
+        const power = numeric('#power');
+        const hours = numeric('#hours');
+        const days = numeric('#days');
+        const rate = numeric('#rate');
+        const error = $('#running-error');
+        const currency = $('#run-currency').value;
+        if (!validRange(power, 0, 100) || !validRange(hours, 0, 24) || !validRange(days, 0, 31) || !validRange(rate, 0, 1000)) {
+          error.textContent = 'Check the values. Use 0–100 kW, 0–24 hours, 0–31 days and a non-negative rate.';
+          $('#monthly-use').textContent = '—';
+          $('#monthly-cost').textContent = '—';
+          return;
+        }
+        error.textContent = '';
+        const kwh = power * hours * days;
+        $('#monthly-use').textContent = `${kwh.toLocaleString(undefined, { maximumFractionDigits: 1 })} kWh`;
+        $('#monthly-cost').textContent = formatMoney(kwh * rate, currency);
+      };
+      ['#power', '#hours', '#days', '#rate', '#run-currency'].forEach(selector => $(selector).addEventListener('input', updateRunningCost));
+      updateRunningCost();
+
+      // FAQ accordions
+      $$('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.closest('.faq-item');
+          const expanded = button.getAttribute('aria-expanded') === 'true';
+          button.setAttribute('aria-expanded', String(!expanded));
+          item.classList.toggle('open', !expanded);
+        });
+      });
+
+      // Back-to-top affordance
+      const backTop = $('#back-top');
+      const updateBackTop = () => backTop.classList.toggle('visible', window.scrollY > 650);
+      window.addEventListener('scroll', updateBackTop, { passive: true });
+      updateBackTop();
+      backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+  </script>
+</body>
+</html>
