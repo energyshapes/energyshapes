@@ -455,6 +455,21 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
     }
+    /* Improved text contrast for accessibility */
+:root {
+  --muted: #53635b;
+}
+
+.hero-notes,
+.hero-scroll,
+.guide-meta,
+.search-shortcut,
+.calc-tab,
+.field-hint,
+.result-box span,
+.calc-note {
+  color: var(--muted);
+}
   </style>
   <script type="application/ld+json">
   {
