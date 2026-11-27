@@ -1,0 +1,28 @@
+# Energy Shapes — Home Energy Upgrade
+
+> Energy Shapes publishes practical educational guides and tools about heat pumps, heating and cooling systems, insulation, water heaters and home energy improvements.
+
+The website helps homeowners understand equipment choices, installation considerations, cost factors and home energy planning. Its calculators provide illustrative estimates, not guaranteed savings or professional assessments.
+
+## Main pages
+
+- [Home](https://www.energyshapes.com/): Main website and home energy tools.
+- [About](https://www.energyshapes.com/about): Our approach to home energy information.
+- [Contact](https://www.energyshapes.com/contact): Contact the website.
+
+## Guides
+
+- [Attic insulation types and costs](https://www.energyshapes.com/guides/attic-insulation-types-cost)
+- [Central air conditioner replacement](https://www.energyshapes.com/guides/central-air-conditioner-replacement)
+- [Ducted vs. ductless HVAC](https://www.energyshapes.com/guides/ducted-vs-ductless-hvac)
+- [Fiberglass vs. cellulose insulation](https://www.energyshapes.com/guides/fiberglass-vs-cellulose-insulation)
+- [Heat pump installation costs](https://www.energyshapes.com/guides/heat-pump-installation-cost)
+- [Heat pump vs. conventional water heater](https://www.energyshapes.com/guides/heat-pump-vs-conventional-water-heater)
+- [Heat pump vs. gas furnace](https://www.energyshapes.com/guides/heat-pump-vs-gas-furnace)
+- [Heat pump water heaters](https://www.energyshapes.com/guides/heat-pump-water-heater)
+- [Home energy assessments](https://www.energyshapes.com/guides/home-energy-assessment)
+
+## Policies
+
+- [Privacy policy](https://www.energyshapes.com/privacy)
+- [Disclaimer](https://www.energyshapes.com/disclaimer)
