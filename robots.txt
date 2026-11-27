@@ -1,3 +1,4 @@
+Agentmap: https://www.energyshapes.com/.well-known/ard.json
 User-agent: Mediapartners-Google
 Allow: /
 
