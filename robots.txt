@@ -1,0 +1,12 @@
+Agentmap: https://www.energyshapes.com/.well-known/ard.json
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: *
+Allow: /
+Allow: /guides/
+
+Sitemap: https://www.energyshapes.com/sitemap.xml
