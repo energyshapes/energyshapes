@@ -1,14 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Tag Manager -->
+<!-- Advanced Consent Mode v2: queue consent before Google Tag Manager. -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  (function () {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+
+    var savedChoice = null;
+    try {
+      var stored = JSON.parse(window.localStorage.getItem('energyShapesCookieConsentV1') || 'null');
+      if (stored && typeof stored.analytics === 'boolean' &&
+          typeof stored.advertising === 'boolean' &&
+          typeof stored.expiresAt === 'number' && stored.expiresAt > Date.now()) {
+        savedChoice = stored;
+      }
+    } catch (error) {
+      // If storage is unavailable, use denied defaults for this page view.
+    }
+
+    // First establish a denied default so no Google tag can run unrestricted.
+    window.gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted',
+      personalization_storage: 'denied'
+    });
+
+    // Further redact ad click identifiers while advertising storage is denied.
+    window.gtag('set', 'ads_data_redaction', true);
+
+    // Apply a valid choice from a previous visit before GTM is allowed to load.
+    if (savedChoice) {
+      window.gtag('consent', 'update', {
+        analytics_storage: savedChoice.analytics ? 'granted' : 'denied',
+        ad_storage: savedChoice.advertising ? 'granted' : 'denied',
+        ad_user_data: savedChoice.advertising ? 'granted' : 'denied',
+        ad_personalization: savedChoice.advertising ? 'granted' : 'denied',
+        functionality_storage: 'granted',
+        security_storage: 'granted',
+        personalization_storage: 'denied'
+      });
+    }
+  })();
 </script>
-<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-WP2W6S87"></script>
-<!-- End Google Tag Manager -->
-  <meta charset="utf-8">
+
+<!-- Google Tag Manager: loads with the consent state already queued above. -->
+<script>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var firstScript = d.getElementsByTagName(s)[0];
+    var gtmScript = d.createElement(s);
+    var dataLayerParam = l !== 'dataLayer' ? '&l=' + l : '';
+    gtmScript.async = true;
+    gtmScript.setAttribute('data-energy-shapes-gtm', 'true');
+    gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dataLayerParam;
+    firstScript.parentNode.insertBefore(gtmScript, firstScript);
+  })(window, document, 'script', 'dataLayer', 'GTM-WP2W6S87');
+</script>
+<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f5ef">
   <meta name="description" content="A practical guide to replacing central air conditioning: sizing, ducts, matched equipment, efficiency ratings, installation quality and contractor quote questions.">
@@ -610,12 +664,7 @@
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.energyshapes.com/"}, {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://www.energyshapes.com/#guides"}, {"@type": "ListItem", "position": 3, "name": "Central Air Conditioner Replacement: What to Check Before You Buy", "item": "https://www.energyshapes.com/guides/central-air-conditioner-replacement"}]}</script>
 </head>
 <body>
-<noscript>
-  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WP2W6S87"
-          height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
-
-  <a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">Skip to content</a>
     <svg aria-hidden="true" width="0" height="0" style="position:absolute;overflow:hidden">
     <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 21v-7h6v7" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -697,9 +746,9 @@
         </div>
         <div class="footer-col"><h3>Explore</h3><a href="/index#topics">Home upgrade topics</a><a href="/index#guides">Cost guides</a><a href="/index#comparisons">Comparisons</a><a href="/index#tools">Calculators</a></div>
         <div class="footer-col"><h3>Learn</h3><a href="/index#about">Our approach</a><a href="/index#faq">FAQs</a><a href="/index#guides">Latest guides</a></div>
-        <div class="footer-col"><h3>Information</h3><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy policy</a><a href="/disclaimer">Disclaimer</a></div>
+        <div class="footer-col"><h3>Information</h3><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy policy</a><a href="/disclaimer">Disclaimer</a><a href="/cookie-policy">Cookie Policy</a></div>
       </div>
-      <div class="footer-bottom"><span>© <span id="year"></span> Home Energy Upgrade. All rights reserved.</span><div class="footer-bottom-links"><a href="/privacy">Privacy</a><a href="/disclaimer">Disclaimer</a><a href="/index#top">Back to top ↑</a></div></div>
+      <div class="footer-bottom"><span>© <span id="year"></span> Home Energy Upgrade. All rights reserved.</span><div class="footer-bottom-links"><a href="/privacy">Privacy</a><a href="/disclaimer">Disclaimer</a><a href="/cookie-policy">Cookie Policy</a><a href="/index#top">Back to top ↑</a></div></div>
     </div>
   </footer>
 <button class="back-top" id="back-top" type="button" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -789,5 +838,266 @@
       }
     })();
   </script>
+<script>
+(function () {
+  'use strict';
+
+  var STORAGE_KEY = 'energyShapesCookieConsentV1';
+  var CONSENT_TTL_DAYS = 180;
+  var currentChoice = null;
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+
+  function normalizeChoice(value) {
+    if (!value || typeof value !== 'object') return null;
+    if (typeof value.analytics !== 'boolean' || typeof value.advertising !== 'boolean') return null;
+    if (typeof value.expiresAt !== 'number' || value.expiresAt <= Date.now()) return null;
+    return {
+      analytics: value.analytics,
+      advertising: value.advertising,
+      expiresAt: value.expiresAt
+    };
+  }
+
+  function readChoice() {
+    try {
+      return normalizeChoice(JSON.parse(window.localStorage.getItem(STORAGE_KEY) || 'null'));
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function saveChoice(choice) {
+    var saved = {
+      analytics: !!choice.analytics,
+      advertising: !!choice.advertising,
+      expiresAt: Date.now() + CONSENT_TTL_DAYS * 24 * 60 * 60 * 1000
+    };
+    currentChoice = saved;
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+    } catch (error) {
+      // Consent still applies for this page view if storage is unavailable.
+    }
+    updateGoogleConsent(saved);
+    return saved;
+  }
+
+  function updateGoogleConsent(choice) {
+    window.gtag('consent', 'update', {
+      analytics_storage: choice.analytics ? 'granted' : 'denied',
+      ad_storage: choice.advertising ? 'granted' : 'denied',
+      ad_user_data: choice.advertising ? 'granted' : 'denied',
+      ad_personalization: choice.advertising ? 'granted' : 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted',
+      personalization_storage: 'denied'
+    });
+  }
+
+  // The head script already applied any saved consent before GTM was loaded.
+  currentChoice = readChoice();
+
+  var css = `
+    #es-cookie-consent, #es-cookie-settings {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    #es-cookie-consent {
+      position: fixed; inset: auto 0 0; z-index: 2147483000; padding: 18px;
+      background: rgba(16, 35, 29, .42); backdrop-filter: blur(5px);
+    }
+    #es-cookie-consent[hidden] { display: none !important; }
+    .es-cookie-card {
+      width: min(100%, 1080px); margin: 0 auto; padding: 24px 26px;
+      color: #172a25; background: #fff; border: 1px solid #dfe4dc;
+      border-radius: 19px; box-shadow: 0 20px 60px rgba(0,0,0,.22);
+    }
+    .es-cookie-kicker { margin: 0 0 5px; color: #28614e; font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .es-cookie-card h2 { margin: 0 0 7px; color: #172a25; font-size: clamp(1.2rem, 2.2vw, 1.55rem); line-height: 1.2; }
+    .es-cookie-card p { max-width: 800px; margin: 0 0 10px; color: #53635c; font-size: .94rem; line-height: 1.55; }
+    .es-cookie-card a { color: #174b3e; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    .es-cookie-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 9px; margin-top: 16px; }
+    .es-cookie-btn {
+      min-height: 43px; padding: 10px 16px; border: 1px solid #174b3e; border-radius: 999px;
+      font: inherit; font-size: .9rem; font-weight: 750; cursor: pointer; transition: transform .15s ease, background .15s ease;
+    }
+    .es-cookie-btn:hover { transform: translateY(-1px); }
+    .es-cookie-btn:focus-visible, #es-cookie-settings:focus-visible, .es-cookie-option input:focus-visible { outline: 3px solid #d38b50; outline-offset: 3px; }
+    .es-cookie-btn-primary { color: #fff; background: #174b3e; }
+    .es-cookie-btn-primary:hover { background: #10392f; }
+    .es-cookie-btn-secondary { color: #174b3e; background: #fff; }
+    .es-cookie-btn-quiet { color: #174b3e; background: #e7f0e3; }
+    .es-cookie-preferences { margin-top: 17px; padding-top: 15px; border-top: 1px solid #dfe4dc; }
+    .es-cookie-preferences[hidden] { display: none !important; }
+    .es-cookie-preferences h3 { margin: 0 0 10px; font-size: 1rem; color: #172a25; }
+    .es-cookie-option { display: flex; align-items: flex-start; gap: 11px; padding: 11px 0; border-top: 1px solid #edf0eb; }
+    .es-cookie-option input { width: 18px; height: 18px; flex: 0 0 auto; margin: 3px 0 0; accent-color: #174b3e; }
+    .es-cookie-option strong { display: block; color: #172a25; font-size: .93rem; }
+    .es-cookie-option small { display: block; margin-top: 2px; color: #617067; font-size: .84rem; line-height: 1.45; }
+    .es-cookie-always { flex: 0 0 auto; margin: 3px 0 0 auto; color: #28614e; font-size: .78rem; font-weight: 800; white-space: nowrap; }
+    #es-cookie-settings {
+      position: fixed; left: 16px; bottom: 16px; z-index: 2147482000;
+      min-height: 39px; padding: 8px 13px; border: 1px solid #174b3e; border-radius: 999px;
+      color: #fff; background: #174b3e; box-shadow: 0 5px 18px rgba(16,57,47,.2);
+      font: inherit; font-size: .8rem; font-weight: 750; cursor: pointer;
+    }
+    #es-cookie-settings[hidden] { display: none !important; }
+    @media (max-width: 640px) {
+      #es-cookie-consent { padding: 10px; }
+      .es-cookie-card { padding: 19px 17px; max-height: min(86vh, 720px); overflow-y: auto; border-radius: 15px; }
+      .es-cookie-actions { display: grid; grid-template-columns: 1fr; }
+      .es-cookie-btn { width: 100%; }
+      #es-cookie-settings { left: 10px; bottom: 10px; }
+      .es-cookie-always { font-size: .72rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { .es-cookie-btn { transition: none; } }
+  `;
+
+  function renderConsentUi() {
+    if (document.getElementById('es-cookie-consent')) return;
+
+    var style = document.createElement('style');
+    style.id = 'es-cookie-consent-styles';
+    style.textContent = css;
+    document.head.appendChild(style);
+
+    var wrapper = document.createElement('div');
+    wrapper.innerHTML = `
+      <section id="es-cookie-consent" aria-label="Cookie consent choices" hidden>
+        <div class="es-cookie-card" role="dialog" aria-labelledby="es-cookie-title" aria-describedby="es-cookie-description">
+          <p class="es-cookie-kicker">Your privacy choices</p>
+          <h2 id="es-cookie-title">Choose how we use cookies</h2>
+          <p id="es-cookie-description">Energy Shapes uses essential and functional storage to operate the site and remember your display preference. With your permission, we also use analytics to understand site use and advertising technologies to support relevant ads. Under Advanced Consent Mode, Google tags may still send limited cookieless measurement signals while optional storage is denied; optional cookies are not enabled by those signals. You can change your choices at any time.</p>
+          <p>Read our <a href="/cookie-policy">Cookie Policy</a> and <a href="/privacy">Privacy Policy</a>.</p>
+          <div class="es-cookie-actions">
+            <button class="es-cookie-btn es-cookie-btn-secondary" type="button" data-es-cookie="reject">Reject optional</button>
+            <button class="es-cookie-btn es-cookie-btn-quiet" type="button" data-es-cookie="customize">Customize preferences</button>
+            <button class="es-cookie-btn es-cookie-btn-primary" type="button" data-es-cookie="accept">Accept all</button>
+          </div>
+          <div class="es-cookie-preferences" id="es-cookie-preferences" hidden>
+            <h3>Cookie preferences</h3>
+            <div class="es-cookie-option">
+              <div><strong>Essential and functional storage</strong><small>Supports core site operation, security and your selected display preference.</small></div>
+              <span class="es-cookie-always">Always active</span>
+            </div>
+            <label class="es-cookie-option" for="es-cookie-analytics">
+              <input id="es-cookie-analytics" type="checkbox">
+              <span><strong>Analytics</strong><small>Allows analytics tags to measure visits and understand how the site is used.</small></span>
+            </label>
+            <label class="es-cookie-option" for="es-cookie-advertising">
+              <input id="es-cookie-advertising" type="checkbox">
+              <span><strong>Advertising</strong><small>Allows advertising storage, ad-related data use and ad personalization.</small></span>
+            </label>
+            <div class="es-cookie-actions">
+              <button class="es-cookie-btn es-cookie-btn-secondary" type="button" data-es-cookie="cancel">Cancel</button>
+              <button class="es-cookie-btn es-cookie-btn-primary" type="button" data-es-cookie="save">Save my preferences</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <button id="es-cookie-settings" type="button" aria-label="Open cookie settings">Cookie settings</button>
+    `;
+    document.body.appendChild(wrapper);
+
+    var banner = document.getElementById('es-cookie-consent');
+    var settingsButton = document.getElementById('es-cookie-settings');
+    var preferencePanel = document.getElementById('es-cookie-preferences');
+    var analyticsInput = document.getElementById('es-cookie-analytics');
+    var advertisingInput = document.getElementById('es-cookie-advertising');
+    var returnFocus = null;
+    var bannerWasOpen = false;
+
+    function showBanner(showPreferences) {
+      returnFocus = document.activeElement;
+      banner.hidden = false;
+      settingsButton.hidden = true;
+      preferencePanel.hidden = !showPreferences;
+      analyticsInput.checked = !!(currentChoice && currentChoice.analytics);
+      advertisingInput.checked = !!(currentChoice && currentChoice.advertising);
+      bannerWasOpen = true;
+      var focusTarget = showPreferences ? document.querySelector('[data-es-cookie="save"]') : document.querySelector('[data-es-cookie="reject"]');
+      if (focusTarget) focusTarget.focus();
+    }
+
+    function hideBanner() {
+      banner.hidden = true;
+      settingsButton.hidden = false;
+      bannerWasOpen = false;
+      if (returnFocus && typeof returnFocus.focus === 'function') returnFocus.focus();
+    }
+
+    function acceptAll() {
+      saveChoice({ analytics: true, advertising: true });
+      hideBanner();
+    }
+
+    banner.addEventListener('click', function (event) {
+      var button = event.target.closest('[data-es-cookie]');
+      if (!button) return;
+      var action = button.getAttribute('data-es-cookie');
+      if (action === 'accept') {
+        acceptAll();
+      } else if (action === 'reject') {
+        saveChoice({ analytics: false, advertising: false });
+        hideBanner();
+      } else if (action === 'customize') {
+        showBanner(true);
+      } else if (action === 'save') {
+        saveChoice({ analytics: analyticsInput.checked, advertising: advertisingInput.checked });
+        hideBanner();
+      } else if (action === 'cancel') {
+        if (currentChoice) hideBanner();
+        else {
+          preferencePanel.hidden = true;
+          var firstButton = banner.querySelector('[data-es-cookie="reject"]');
+          if (firstButton) firstButton.focus();
+        }
+      }
+    });
+
+    settingsButton.addEventListener('click', function () { showBanner(true); });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && !banner.hidden) {
+        if (currentChoice) hideBanner();
+        else {
+          preferencePanel.hidden = true;
+          var firstButton = banner.querySelector('[data-es-cookie="reject"]');
+          if (firstButton) firstButton.focus();
+        }
+      }
+    });
+
+    if (!currentChoice) {
+      banner.hidden = false;
+      settingsButton.hidden = true;
+      analyticsInput.checked = false;
+      advertisingInput.checked = false;
+    } else {
+      settingsButton.hidden = false;
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderConsentUi, { once: true });
+  } else {
+    renderConsentUi();
+  }
+
+  window.EnergyShapesCookieConsent = {
+    openSettings: function () {
+      if (!document.getElementById('es-cookie-consent')) renderConsentUi();
+      var button = document.getElementById('es-cookie-settings');
+      if (button) button.click();
+    },
+    getChoice: function () {
+      return currentChoice ? {
+        analytics: currentChoice.analytics,
+        advertising: currentChoice.advertising
+      } : null;
+    }
+  };
+})();
+</script>
 </body>
 </html>
